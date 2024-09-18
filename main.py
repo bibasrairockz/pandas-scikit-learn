@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, classificatin_report
+from sklearn.metrics import accuracy_score, classification_report
 
 # Loading the dataset
 file_path= r'C:\Users\bibas\Downloads\GenAI\pytorch\tarabut\loan_approval_dataset.csv'
@@ -31,9 +31,9 @@ print(loan_data.head())
 X= loan_data.drop(["loan_id", "loan_status"], axis= 1)
 y= loan_data["loan_status"]
 
-# Check the shape of X and y
-print("X shape:", X.shape)  # This should print the number of rows and columns
+print("X shape:", X.shape)
 print("y shape:", y.shape) 
+
 ## split
 X_train, X_test, y_train, y_test= train_test_split(X, y, test_size= 0.2, random_state= 42)
 
@@ -50,7 +50,7 @@ y_pred= model.predict(X_test_scaled)
 
 # Evalute
 accuracy= accuracy_score(y_test, y_pred)
-report= classificatin_report(y_test, y_pred)
+report= classification_report(y_test, y_pred)
 
 print(f"Accuracy: {accuracy}")
 print(f"Classification report: {report}")
